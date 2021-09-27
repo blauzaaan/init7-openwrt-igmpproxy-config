@@ -1,0 +1,20 @@
+# /etc/config/igmpproxy
+
+config igmpproxy
+        option quickleave 1
+#       option verbose [0-3](none, minimal[default], more, maximum)
+
+config phyint
+        option network wan
+        option zone wan
+        option direction upstream
+#		change this according to https://www.init7.net/de/support/routerinfos/2020_turris_omnia_igmp-proxy_nr_01.pdf
+#		but beware the new config syntax in newer versions of igmpproxy
+#		and that this manual modification will prevent automatic updates of this config file by opkg!
+#       list altnet 192.168.1.0/24
+        list altnet 0.0.0.0/0
+
+config phyint
+        option network lan
+        option zone lan
+        option direction downstream
